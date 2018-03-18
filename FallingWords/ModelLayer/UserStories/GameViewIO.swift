@@ -8,4 +8,12 @@
 
 protocol GameViewIO: ViewIO {
     
+    /// Right buttom pressed
+    var rightPressed: Action { get }
+    
+    /// Wrong button pressed
+    var wrongPressed: Action { get }
+    
+    /// Show new word
+    func showWord(_ word: Word)
 }

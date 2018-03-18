@@ -12,6 +12,13 @@ import RxCocoa
 
 class GameViewController: UIViewController {
     
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var progressBar: ProgressBarView!
+    @IBOutlet weak var originalWordLabel: UILabel!
+    @IBOutlet weak var pointsView: PointsView!
+    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var wrongButton: UIButton!
+    
     private let viewModel = GameViewModel<GameViewController>()
     private let disposeBag = DisposeBag()
     

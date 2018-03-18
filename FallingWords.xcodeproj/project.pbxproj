@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		015D3AE2205DBC7900BB3AD4 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AE1205DBC7900BB3AD4 /* ProgressBarView.swift */; };
+		015D3AE4205DD91300BB3AD4 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AE3205DD91300BB3AD4 /* PointsView.swift */; };
 		01C8E2ED2057FCEA00ABD392 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8E2EC2057FCEA00ABD392 /* AppDelegate.swift */; };
 		01C8E2F22057FCEA00ABD392 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01C8E2F02057FCEA00ABD392 /* Main.storyboard */; };
 		01C8E2F42057FCEA00ABD392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C8E2F32057FCEA00ABD392 /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		015D3AE1205DBC7900BB3AD4 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		015D3AE3205DD91300BB3AD4 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		01C8E2E92057FCEA00ABD392 /* FallingWords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallingWords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01C8E2EC2057FCEA00ABD392 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01C8E2F12057FCEA00ABD392 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		015D3ADC205DBBDD00BB3AD4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				015D3AE1205DBC7900BB3AD4 /* ProgressBarView.swift */,
+				015D3AE3205DD91300BB3AD4 /* PointsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		01C8E2E02057FCEA00ABD392 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +143,7 @@
 				01D5E51220581CBE009FA0A9 /* Resources */,
 				01D5E51420581CE9009FA0A9 /* UserStories */,
 				01D5E51320581CCE009FA0A9 /* Layout */,
+				015D3ADC205DBBDD00BB3AD4 /* Views */,
 			);
 			path = ViewLayer;
 			sourceTree = "<group>";
@@ -480,11 +494,13 @@
 				01D5E523205A88AC009FA0A9 /* Game.swift in Sources */,
 				01D5E52D205A8986009FA0A9 /* LocalGameService.swift in Sources */,
 				01C8E30D2058167000ABD392 /* GameViewController.swift in Sources */,
+				015D3AE2205DBC7900BB3AD4 /* ProgressBarView.swift in Sources */,
 				01D5E51A20582659009FA0A9 /* ViewModel.swift in Sources */,
 				01D5E52F205A8A35009FA0A9 /* GameViewIO.swift in Sources */,
 				01C8E2ED2057FCEA00ABD392 /* AppDelegate.swift in Sources */,
 				01D5E51C20582681009FA0A9 /* ViewIO.swift in Sources */,
 				01D5E528205A8932009FA0A9 /* GameService.swift in Sources */,
+				015D3AE4205DD91300BB3AD4 /* PointsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
