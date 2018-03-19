@@ -8,5 +8,8 @@
 
 struct Word {
     let original: String
-    let translations: [String : Bool]
+    let translations: [Translation]
+    var translation: String {
+        return translations.first!.title
+    }
 }

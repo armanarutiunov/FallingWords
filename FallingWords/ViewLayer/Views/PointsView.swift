@@ -12,26 +12,12 @@ class PointsView: UIView {
 
     @IBOutlet weak var translationLabel: UILabel!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    private func setup() {
-        translationLabel.text = ""
-    }
-    
     func newFall(with word: String, duration: CFTimeInterval) {
         translationLabel.text = word
         let animation = CABasicAnimation()
         animation.keyPath = "position"
-        animation.fromValue = translationLabel.layer.value(forKey: "position")
-        let finishPoint = CGPoint(x: translationLabel.frame.origin.x,
+        animation.fromValue = NSValue(cgPoint: translationLabel.center)
+        let finishPoint = CGPoint(x: translationLabel.center.x,
                                   y: frame.size.height)
         animation.toValue = NSValue(cgPoint: finishPoint)
         animation.duration = duration

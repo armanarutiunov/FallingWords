@@ -162,7 +162,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estranjero" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9x-V5-0QN">
-                                        <rect key="frame" x="55" y="-20.5" width="160" height="20.5"/>
+                                        <rect key="frame" x="94" y="-20.5" width="82" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.15907579660415649" green="0.22825866937637329" blue="0.28362894058227539" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -172,9 +172,10 @@
                                 <constraints>
                                     <constraint firstItem="yIT-qV-0NE" firstAttribute="top" secondItem="Iol-am-vdm" secondAttribute="top" id="8RL-lh-3ep"/>
                                     <constraint firstItem="yIT-qV-0NE" firstAttribute="leading" secondItem="Iol-am-vdm" secondAttribute="leading" id="HY9-5J-Tal"/>
-                                    <constraint firstAttribute="trailing" secondItem="C9x-V5-0QN" secondAttribute="trailing" constant="55" id="LHG-PR-JES"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="C9x-V5-0QN" secondAttribute="trailing" constant="55" id="LHG-PR-JES"/>
+                                    <constraint firstItem="C9x-V5-0QN" firstAttribute="centerX" secondItem="Iol-am-vdm" secondAttribute="centerX" id="MNX-jx-cwO"/>
                                     <constraint firstAttribute="trailing" secondItem="yIT-qV-0NE" secondAttribute="trailing" id="TOX-hs-Yeb"/>
-                                    <constraint firstItem="C9x-V5-0QN" firstAttribute="leading" secondItem="Iol-am-vdm" secondAttribute="leading" constant="55" id="ir2-mJ-zLU"/>
+                                    <constraint firstItem="C9x-V5-0QN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Iol-am-vdm" secondAttribute="leading" constant="55" id="ir2-mJ-zLU"/>
                                     <constraint firstItem="C9x-V5-0QN" firstAttribute="bottom" secondItem="Iol-am-vdm" secondAttribute="top" id="vF4-kD-C30"/>
                                     <constraint firstAttribute="bottom" secondItem="yIT-qV-0NE" secondAttribute="bottom" id="vas-n2-d7t"/>
                                 </constraints>

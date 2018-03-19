@@ -25,7 +25,12 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         viewModel.attachView(viewIO: self).disposed(by: disposeBag)
+        progressBar.greenWidth.constant = progressBar.frame.width / 2
     }
 
 }
@@ -39,11 +44,17 @@ extension GameViewController: GameViewIO {
         return wrongButton.rx.tap.asAction()
     }
     
-    func showWord(_ word: Word) {
-        
+    func showWord(_ word: Word, duration: CFTimeInterval) {
+        originalWordLabel.text = word.original
+        pointsView.newFall(with: word.translation, duration: duration)
     }
     
-    
+    func showError(_ error: DomainError) {
+        let alert = UIAlertController(title: "Error", message: error.string, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension GameViewController {

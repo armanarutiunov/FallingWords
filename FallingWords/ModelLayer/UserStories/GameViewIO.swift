@@ -6,6 +6,8 @@
 //  Copyright © 2018 Arman Arutyunov. All rights reserved.
 //
 
+import Foundation
+
 protocol GameViewIO: ViewIO {
     
     /// Right buttom pressed
@@ -15,5 +17,8 @@ protocol GameViewIO: ViewIO {
     var wrongPressed: Action { get }
     
     /// Show new word
-    func showWord(_ word: Word)
+    func showWord(_ word: Word, duration: CFTimeInterval)
+    
+    /// Show error
+    func showError(_ error: DomainError)
 }

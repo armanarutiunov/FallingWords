@@ -11,34 +11,67 @@ import RxSwift
 class GameViewModel<V: GameViewIO>: ViewModel<V> {
     
     private let gameService: GameService = LocalGameService()
-    private let words = Variable<[Word]>([])
+    private let game = Variable<Game>(Game(words: [Word]()))
     
     override func setup() {
-        
+        updateWords()
     }
     
     override func viewAttached() -> Disposable {
         guard let viewIO = viewIO else { return Disposables.create() }
         
-        let words = gameService.getWords().asDriver(onErrorDriveWith: .never())
-        
         return disposable(
-            words.drive(onNext:{ [weak self] jsonWords in
-                guard let `self` = self else { return }
-                let words = self.mapWords(jsonWords)
-                self.words.value = words
+            viewIO.rightPressed.drive(onNext: { [weak self] _ in
+                self?.checkResult(userChoice: true)
             }),
-            viewIO.rightPressed.drive(onNext: { _ in
-                
-            }),
-            viewIO.wrongPressed.drive(onNext: { _ in
-                
+            viewIO.wrongPressed.drive(onNext: { [weak self] _ in
+                self?.checkResult(userChoice: false)
             })
         )
     }
     
-    private func mapWords(_ jsonWords: [JSONWord]) -> [Word] {
-        let words = [Word]()
-        return words
+    private func checkResult(userChoice: Bool) {
+        
     }
+    
+    private func updateWords() {
+        gameService.getWords()
+            .subscribe(
+                onNext:{ [weak self] jsonWords in
+                    guard let `self` = self else { return }
+                    let words = self.shuffleWords(jsonWords)
+                    self.game.value = Game(words: words)
+                    let word = self.game.value.updateCurrentWord()
+                    self.viewIO?.showWord(word, duration: self.game.value.fallDuration)
+            },
+                onError: { [weak self] in
+                    if let error = $0 as? DomainError {
+                        self?.viewIO?.showError(error)
+                    }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func shuffleWords(_ jsonWords: [JSONWord]) -> [Word] {
+        var words = [Word]()
+        
+        jsonWords.forEach {
+            var translations = [Translation]()
+            var rightTranslation = Translation(title: $0.translation, isRight: true)
+            for word in jsonWords {
+                if word.translation == $0.translation{
+                    rightTranslation = Translation(title: word.translation, isRight: true)
+                }
+                else {
+                    translations.append(Translation(title: word.translation, isRight: false))
+                }
+            }
+            var shuffledTranslations = translations.shuffled()
+            shuffledTranslations.insert(rightTranslation, at: Int(arc4random_uniform(4)))
+            let word = Word(original: $0.original, translations: shuffledTranslations)
+            words.append(word)
+        }
+        return words.shuffled()
+    }
+    
 }
