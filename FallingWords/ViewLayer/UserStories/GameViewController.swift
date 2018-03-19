@@ -31,6 +31,18 @@ class GameViewController: UIViewController {
 }
 
 extension GameViewController: GameViewIO {
+    var rightPressed: Action {
+        return rightButton.rx.tap.asAction()
+    }
+    
+    var wrongPressed: Action {
+        return wrongButton.rx.tap.asAction()
+    }
+    
+    func showWord(_ word: Word) {
+        
+    }
+    
     
 }
 

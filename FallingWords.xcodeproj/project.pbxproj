@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		015D3AE2205DBC7900BB3AD4 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AE1205DBC7900BB3AD4 /* ProgressBarView.swift */; };
 		015D3AE4205DD91300BB3AD4 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AE3205DD91300BB3AD4 /* PointsView.swift */; };
+		015D3AE7205FF12C00BB3AD4 /* JSONWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AE6205FF12C00BB3AD4 /* JSONWord.swift */; };
+		015D3AEA205FFB1F00BB3AD4 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AE9205FFB1F00BB3AD4 /* DomainError.swift */; };
+		015D3AEC205FFB7200BB3AD4 /* ErrorCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AEB205FFB7200BB3AD4 /* ErrorCase.swift */; };
+		015D3AEF206028A700BB3AD4 /* ControlEvent+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AEE206028A700BB3AD4 /* ControlEvent+Extras.swift */; };
 		01C8E2ED2057FCEA00ABD392 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8E2EC2057FCEA00ABD392 /* AppDelegate.swift */; };
 		01C8E2F22057FCEA00ABD392 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01C8E2F02057FCEA00ABD392 /* Main.storyboard */; };
 		01C8E2F42057FCEA00ABD392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C8E2F32057FCEA00ABD392 /* Assets.xcassets */; };
@@ -41,6 +45,10 @@
 /* Begin PBXFileReference section */
 		015D3AE1205DBC7900BB3AD4 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		015D3AE3205DD91300BB3AD4 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
+		015D3AE6205FF12C00BB3AD4 /* JSONWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONWord.swift; sourceTree = "<group>"; };
+		015D3AE9205FFB1F00BB3AD4 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
+		015D3AEB205FFB7200BB3AD4 /* ErrorCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCase.swift; sourceTree = "<group>"; };
+		015D3AEE206028A700BB3AD4 /* ControlEvent+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ControlEvent+Extras.swift"; sourceTree = "<group>"; };
 		01C8E2E92057FCEA00ABD392 /* FallingWords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallingWords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01C8E2EC2057FCEA00ABD392 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01C8E2F12057FCEA00ABD392 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,6 +105,31 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		015D3AE5205FF0FC00BB3AD4 /* JSONEntity */ = {
+			isa = PBXGroup;
+			children = (
+				015D3AE6205FF12C00BB3AD4 /* JSONWord.swift */,
+			);
+			path = JSONEntity;
+			sourceTree = "<group>";
+		};
+		015D3AE8205FFA8C00BB3AD4 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				015D3AE9205FFB1F00BB3AD4 /* DomainError.swift */,
+				015D3AEB205FFB7200BB3AD4 /* ErrorCase.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		015D3AED2060288C00BB3AD4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				015D3AEE206028A700BB3AD4 /* ControlEvent+Extras.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		01C8E2E02057FCEA00ABD392 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +177,7 @@
 				01D5E51420581CE9009FA0A9 /* UserStories */,
 				01D5E51320581CCE009FA0A9 /* Layout */,
 				015D3ADC205DBBDD00BB3AD4 /* Views */,
+				015D3AED2060288C00BB3AD4 /* Extensions */,
 			);
 			path = ViewLayer;
 			sourceTree = "<group>";
@@ -214,6 +248,7 @@
 		01D5E520205A8885009FA0A9 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				015D3AE8205FFA8C00BB3AD4 /* Error */,
 				01D5E521205A8896009FA0A9 /* Entity */,
 				01D5E526205A8926009FA0A9 /* Services */,
 			);
@@ -240,6 +275,7 @@
 		01D5E529205A8954009FA0A9 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				015D3AE5205FF0FC00BB3AD4 /* JSONEntity */,
 				01D5E52A205A896E009FA0A9 /* Local */,
 			);
 			path = DataLayer;
@@ -497,9 +533,13 @@
 				015D3AE2205DBC7900BB3AD4 /* ProgressBarView.swift in Sources */,
 				01D5E51A20582659009FA0A9 /* ViewModel.swift in Sources */,
 				01D5E52F205A8A35009FA0A9 /* GameViewIO.swift in Sources */,
+				015D3AEC205FFB7200BB3AD4 /* ErrorCase.swift in Sources */,
+				015D3AEF206028A700BB3AD4 /* ControlEvent+Extras.swift in Sources */,
 				01C8E2ED2057FCEA00ABD392 /* AppDelegate.swift in Sources */,
 				01D5E51C20582681009FA0A9 /* ViewIO.swift in Sources */,
 				01D5E528205A8932009FA0A9 /* GameService.swift in Sources */,
+				015D3AE7205FF12C00BB3AD4 /* JSONWord.swift in Sources */,
+				015D3AEA205FFB1F00BB3AD4 /* DomainError.swift in Sources */,
 				015D3AE4205DD91300BB3AD4 /* PointsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

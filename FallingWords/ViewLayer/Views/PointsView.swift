@@ -42,8 +42,8 @@ class PointsView: UIView {
     
     func stopFalling() -> Int {
         let y = translationLabel.frame.origin.y
-        let zoneHeight = frame.size.height / 5
         translationLabel.layer.removeAllAnimations()
+        let zoneHeight = frame.size.height / 5
         if y > zoneHeight * 4 { return 10 }
         else if y > zoneHeight * 3 { return 30 }
         else if y > zoneHeight * 2 { return 50 }
