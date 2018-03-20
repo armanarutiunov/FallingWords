@@ -7,11 +7,12 @@
 //
 
 import RxSwift
+import RxCocoa
 
 class GameViewModel<V: GameViewIO>: ViewModel<V> {
     
     private let gameService: GameService = LocalGameService()
-    private let game = Variable<Game>(Game(words: [Word]()))
+    private let game = BehaviorRelay<Game>(value: Game(words: [Word]()))
     
     override func setup() {
         updateWords()
@@ -22,16 +23,39 @@ class GameViewModel<V: GameViewIO>: ViewModel<V> {
         
         return disposable(
             viewIO.rightPressed.drive(onNext: { [weak self] _ in
-                self?.checkResult(userChoice: true)
+                self?.finishRound(userChoice: true)
             }),
             viewIO.wrongPressed.drive(onNext: { [weak self] _ in
-                self?.checkResult(userChoice: false)
+                self?.finishRound(userChoice: false)
+            }),
+            viewIO.updateData.drive(onNext: { [weak self] newScore in
+                guard let `self` = self else { return }
+                self.game.value.score = newScore
+                if newScore >= 1000 || newScore <= -1000 {
+                    viewIO.endGame(newScore >= 1000)
+                    return
+                }
+                viewIO.showWord(self.game.value.currentWord,
+                                duration: self.game.value.fallDuration)
+            }),
+            viewIO.didNotHit.drive(onNext: { [weak self] in
+                guard let `self` = self else { return }
+                let isRight = self.game.value.currentWord.translations.first!.isRight
+                self.finishRound(userChoice: !isRight)
+            }),
+            viewIO.newGame.drive(onNext: { [weak self] in
+                self?.updateWords()
             })
         )
     }
     
-    private func checkResult(userChoice: Bool) {
-        
+    private func finishRound(userChoice: Bool) {
+        let userIsRight = userChoice == game.value.currentWord.translations.first!.isRight
+        let _ = userChoice && !userIsRight ?
+            game.value.updateCurrentWord() :
+            game.value.updateTranslation()
+        viewIO?.updateScore(isAdding: userIsRight,
+                            previousScore: game.value.score)
     }
     
     private func updateWords() {
@@ -40,7 +64,7 @@ class GameViewModel<V: GameViewIO>: ViewModel<V> {
                 onNext:{ [weak self] jsonWords in
                     guard let `self` = self else { return }
                     let words = self.shuffleWords(jsonWords)
-                    self.game.value = Game(words: words)
+                    self.game.accept(Game(words: words))
                     let word = self.game.value.updateCurrentWord()
                     self.viewIO?.showWord(word, duration: self.game.value.fallDuration)
             },
@@ -67,7 +91,7 @@ class GameViewModel<V: GameViewIO>: ViewModel<V> {
                 }
             }
             var shuffledTranslations = translations.shuffled()
-            shuffledTranslations.insert(rightTranslation, at: Int(arc4random_uniform(4)))
+            shuffledTranslations.insert(rightTranslation, at: Int(arc4random_uniform(3)))
             let word = Word(original: $0.original, translations: shuffledTranslations)
             words.append(word)
         }

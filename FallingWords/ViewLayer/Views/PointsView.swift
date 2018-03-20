@@ -6,14 +6,20 @@
 //  Copyright © 2018 Arman Arutyunov. All rights reserved.
 //
 
-import UIKit
+import RxSwift
 
 class PointsView: UIView {
 
     @IBOutlet weak var translationLabel: UILabel!
     
+    let didNotHitSignal = PublishSubject<Void>()
+    
+    private var previousWord = ""
+    private var currentWord = ""
+    
     func newFall(with word: String, duration: CFTimeInterval) {
         translationLabel.text = word
+        currentWord = word
         let animation = CABasicAnimation()
         animation.keyPath = "position"
         animation.fromValue = NSValue(cgPoint: translationLabel.center)
@@ -23,11 +29,13 @@ class PointsView: UIView {
         animation.duration = duration
         animation.repeatCount = 1
         animation.autoreverses = false
+        animation.delegate = self
         translationLabel.layer.add(animation, forKey: animation.keyPath!)
     }
     
     func stopFalling() -> Int {
-        let y = translationLabel.frame.origin.y
+        previousWord = translationLabel.text ?? ""
+        let y = translationLabel.layer.presentation()!.frame.origin.y
         translationLabel.layer.removeAllAnimations()
         let zoneHeight = frame.size.height / 5
         if y > zoneHeight * 4 { return 10 }
@@ -37,4 +45,12 @@ class PointsView: UIView {
         else { return 100 }
     }
 
+}
+
+extension PointsView: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if previousWord != currentWord {
+            didNotHitSignal.onNext(())
+        }
+    }
 }

@@ -33,7 +33,7 @@ class Game {
         let first = translations.first!
         if first.isRight {
             translations.removeFirst()
-            translations.insert(first, at: Int(arc4random_uniform(4)))
+            translations.insert(first, at: Int(arc4random_uniform(3)))
             let word = Word(original: firstWord.original, translations: translations)
             updateFirstWord(word)
             return updateCurrentWord()

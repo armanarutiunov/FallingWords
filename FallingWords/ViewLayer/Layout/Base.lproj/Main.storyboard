@@ -92,6 +92,7 @@
                                                 <color key="backgroundColor" red="1" green="0.74509803921568629" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstItem="p9z-7Y-CBE" firstAttribute="centerY" secondItem="D40-J7-PUn" secondAttribute="centerY" id="CSs-rW-JBf"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="p9z-7Y-CBE" secondAttribute="trailing" constant="20" symbolic="YES" id="frs-c4-pEw"/>
                                                     <constraint firstItem="p9z-7Y-CBE" firstAttribute="leading" secondItem="D40-J7-PUn" secondAttribute="leading" constant="8" id="tA9-pQ-WhT"/>
                                                 </constraints>
                                             </view>
@@ -109,6 +110,7 @@
                                                 <constraints>
                                                     <constraint firstItem="ugT-qN-fV0" firstAttribute="leading" secondItem="FoC-Mu-en4" secondAttribute="leading" constant="8" id="ZgR-6D-qtQ"/>
                                                     <constraint firstItem="ugT-qN-fV0" firstAttribute="centerY" secondItem="FoC-Mu-en4" secondAttribute="centerY" id="kcD-Mo-2E7"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ugT-qN-fV0" secondAttribute="trailing" constant="20" symbolic="YES" id="zEG-ac-LQ5"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFI-QY-fXy">
@@ -124,6 +126,7 @@
                                                 <color key="backgroundColor" red="1" green="0.74509803921568629" blue="0.46274509803921571" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstItem="vuR-fD-dGT" firstAttribute="leading" secondItem="LFI-QY-fXy" secondAttribute="leading" constant="8" id="3Db-A1-6US"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vuR-fD-dGT" secondAttribute="trailing" constant="20" symbolic="YES" id="5uQ-ea-Hdg"/>
                                                     <constraint firstItem="vuR-fD-dGT" firstAttribute="centerY" secondItem="LFI-QY-fXy" secondAttribute="centerY" id="gMc-YK-yMe"/>
                                                 </constraints>
                                             </view>
@@ -140,6 +143,7 @@
                                                 <color key="backgroundColor" red="1" green="0.74509803921568629" blue="0.46274509803921571" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstItem="lXD-4D-GUe" firstAttribute="centerY" secondItem="1oy-gd-boT" secondAttribute="centerY" id="6al-YV-voM"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lXD-4D-GUe" secondAttribute="trailing" constant="20" symbolic="YES" id="B7Q-jF-7uT"/>
                                                     <constraint firstItem="lXD-4D-GUe" firstAttribute="leading" secondItem="1oy-gd-boT" secondAttribute="leading" constant="8" id="YKL-WV-ZlC"/>
                                                 </constraints>
                                             </view>
@@ -155,6 +159,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="0.74509803921568629" blue="0.46274509803921571" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Bfz-V1-V9H" secondAttribute="trailing" constant="20" symbolic="YES" id="Cbm-M8-DL6"/>
                                                     <constraint firstItem="Bfz-V1-V9H" firstAttribute="centerY" secondItem="WHt-dc-vms" secondAttribute="centerY" id="HVf-e0-LZI"/>
                                                     <constraint firstItem="Bfz-V1-V9H" firstAttribute="leading" secondItem="WHt-dc-vms" secondAttribute="leading" constant="8" id="q8x-Bp-fpa"/>
                                                 </constraints>
@@ -162,20 +167,36 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estranjero" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9x-V5-0QN">
-                                        <rect key="frame" x="94" y="-20.5" width="82" height="20.5"/>
+                                        <rect key="frame" x="55" y="-20.5" width="160" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.15907579660415649" green="0.22825866937637329" blue="0.28362894058227539" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ato-MW-FUf">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="331"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="80"/>
+                                        <color key="textColor" red="0.690253377" green="0.87432998419999997" blue="0.2217158377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7V0-uK-uwh">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="331"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="80"/>
+                                        <color key="textColor" red="1" green="0.43395155670000002" blue="0.45574241879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="yIT-qV-0NE" firstAttribute="top" secondItem="Iol-am-vdm" secondAttribute="top" id="8RL-lh-3ep"/>
+                                    <constraint firstAttribute="bottom" secondItem="ato-MW-FUf" secondAttribute="bottom" id="DUI-qw-VwR"/>
+                                    <constraint firstItem="ato-MW-FUf" firstAttribute="top" secondItem="C9x-V5-0QN" secondAttribute="bottom" id="GZL-8F-HrQ"/>
                                     <constraint firstItem="yIT-qV-0NE" firstAttribute="leading" secondItem="Iol-am-vdm" secondAttribute="leading" id="HY9-5J-Tal"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="C9x-V5-0QN" secondAttribute="trailing" constant="55" id="LHG-PR-JES"/>
-                                    <constraint firstItem="C9x-V5-0QN" firstAttribute="centerX" secondItem="Iol-am-vdm" secondAttribute="centerX" id="MNX-jx-cwO"/>
+                                    <constraint firstAttribute="trailing" secondItem="C9x-V5-0QN" secondAttribute="trailing" constant="55" id="LHG-PR-JES"/>
                                     <constraint firstAttribute="trailing" secondItem="yIT-qV-0NE" secondAttribute="trailing" id="TOX-hs-Yeb"/>
-                                    <constraint firstItem="C9x-V5-0QN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Iol-am-vdm" secondAttribute="leading" constant="55" id="ir2-mJ-zLU"/>
+                                    <constraint firstAttribute="trailing" secondItem="ato-MW-FUf" secondAttribute="trailing" id="VcP-I3-78c"/>
+                                    <constraint firstItem="C9x-V5-0QN" firstAttribute="leading" secondItem="Iol-am-vdm" secondAttribute="leading" constant="55" id="ir2-mJ-zLU"/>
+                                    <constraint firstItem="ato-MW-FUf" firstAttribute="leading" secondItem="Iol-am-vdm" secondAttribute="leading" id="oF7-ou-q12"/>
                                     <constraint firstItem="C9x-V5-0QN" firstAttribute="bottom" secondItem="Iol-am-vdm" secondAttribute="top" id="vF4-kD-C30"/>
                                     <constraint firstAttribute="bottom" secondItem="yIT-qV-0NE" secondAttribute="bottom" id="vas-n2-d7t"/>
                                 </constraints>
@@ -237,7 +258,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="minusScoreLabel" destination="7V0-uK-uwh" id="r8k-dw-BAd"/>
                         <outlet property="originalWordLabel" destination="1uY-Rn-CVc" id="jQG-fs-RnY"/>
+                        <outlet property="plusScoreLabel" destination="ato-MW-FUf" id="wPz-kA-fZY"/>
                         <outlet property="pointsView" destination="Iol-am-vdm" id="wVh-4E-acS"/>
                         <outlet property="progressBar" destination="d27-dG-RqZ" id="hL6-CV-TjE"/>
                         <outlet property="rightButton" destination="gwi-YH-41h" id="dmx-JA-kBK"/>
