@@ -6,7 +6,7 @@
 //  Copyright © 2018 Arman Arutyunov. All rights reserved.
 //
 
-protocol DomainError: Error {
+public protocol DomainError: Error {
     var description: String { get }
 }
 

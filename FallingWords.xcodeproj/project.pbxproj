@@ -15,6 +15,9 @@
 		015D3AEF206028A700BB3AD4 /* ControlEvent+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AEE206028A700BB3AD4 /* ControlEvent+Extras.swift */; };
 		015D3AF120605A4E00BB3AD4 /* Collections+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AF020605A4E00BB3AD4 /* Collections+Extras.swift */; };
 		015D3AF320605F4F00BB3AD4 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AF220605F4F00BB3AD4 /* Translation.swift */; };
+		015D3AF92060AA8D00BB3AD4 /* GameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AF82060AA8D00BB3AD4 /* GameViewModelTests.swift */; };
+		015D3AFB2060AAC400BB3AD4 /* MockGameViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AFA2060AAC400BB3AD4 /* MockGameViewIO.swift */; };
+		01A050D02060B027007D443E /* MockGameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A050CF2060B027007D443E /* MockGameService.swift */; };
 		01C8E2ED2057FCEA00ABD392 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8E2EC2057FCEA00ABD392 /* AppDelegate.swift */; };
 		01C8E2F22057FCEA00ABD392 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01C8E2F02057FCEA00ABD392 /* Main.storyboard */; };
 		01C8E2F42057FCEA00ABD392 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C8E2F32057FCEA00ABD392 /* Assets.xcassets */; };
@@ -53,6 +56,9 @@
 		015D3AEE206028A700BB3AD4 /* ControlEvent+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ControlEvent+Extras.swift"; sourceTree = "<group>"; };
 		015D3AF020605A4E00BB3AD4 /* Collections+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collections+Extras.swift"; sourceTree = "<group>"; };
 		015D3AF220605F4F00BB3AD4 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		015D3AF82060AA8D00BB3AD4 /* GameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelTests.swift; sourceTree = "<group>"; };
+		015D3AFA2060AAC400BB3AD4 /* MockGameViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameViewIO.swift; sourceTree = "<group>"; };
+		01A050CF2060B027007D443E /* MockGameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameService.swift; sourceTree = "<group>"; };
 		01C8E2E92057FCEA00ABD392 /* FallingWords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallingWords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01C8E2EC2057FCEA00ABD392 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01C8E2F12057FCEA00ABD392 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +141,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		015D3AF62060AA6000BB3AD4 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				015D3AFA2060AAC400BB3AD4 /* MockGameViewIO.swift */,
+				01A050CF2060B027007D443E /* MockGameService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		015D3AF72060AA6800BB3AD4 /* UserStories */ = {
+			isa = PBXGroup;
+			children = (
+				015D3AF82060AA8D00BB3AD4 /* GameViewModelTests.swift */,
+			);
+			path = UserStories;
+			sourceTree = "<group>";
+		};
 		01C8E2E02057FCEA00ABD392 = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				01C8E3012057FCEA00ABD392 /* FallingWordsTests.swift */,
+				015D3AF72060AA6800BB3AD4 /* UserStories */,
+				015D3AF62060AA6000BB3AD4 /* Mocks */,
 				01C8E3032057FCEA00ABD392 /* Info.plist */,
 			);
 			path = FallingWordsTests;
@@ -556,7 +581,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				015D3AF92060AA8D00BB3AD4 /* GameViewModelTests.swift in Sources */,
+				01A050D02060B027007D443E /* MockGameService.swift in Sources */,
 				01C8E3022057FCEA00ABD392 /* FallingWordsTests.swift in Sources */,
+				015D3AFB2060AAC400BB3AD4 /* MockGameViewIO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

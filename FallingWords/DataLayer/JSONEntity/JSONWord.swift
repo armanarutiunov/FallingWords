@@ -6,7 +6,7 @@
 //  Copyright © 2018 Arman Arutyunov. All rights reserved.
 //
 
-struct JSONWord {
+public struct JSONWord {
     let original: String
     let translation: String
 }

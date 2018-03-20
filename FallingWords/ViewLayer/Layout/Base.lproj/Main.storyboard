@@ -178,9 +178,8 @@
                                         <color key="textColor" red="0.690253377" green="0.87432998419999997" blue="0.2217158377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7V0-uK-uwh">
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7V0-uK-uwh">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="331"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="80"/>
                                         <color key="textColor" red="1" green="0.43395155670000002" blue="0.45574241879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -189,14 +188,18 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="yIT-qV-0NE" firstAttribute="top" secondItem="Iol-am-vdm" secondAttribute="top" id="8RL-lh-3ep"/>
+                                    <constraint firstAttribute="trailing" secondItem="7V0-uK-uwh" secondAttribute="trailing" id="95P-ga-7Sf"/>
                                     <constraint firstAttribute="bottom" secondItem="ato-MW-FUf" secondAttribute="bottom" id="DUI-qw-VwR"/>
                                     <constraint firstItem="ato-MW-FUf" firstAttribute="top" secondItem="C9x-V5-0QN" secondAttribute="bottom" id="GZL-8F-HrQ"/>
                                     <constraint firstItem="yIT-qV-0NE" firstAttribute="leading" secondItem="Iol-am-vdm" secondAttribute="leading" id="HY9-5J-Tal"/>
                                     <constraint firstAttribute="trailing" secondItem="C9x-V5-0QN" secondAttribute="trailing" constant="55" id="LHG-PR-JES"/>
                                     <constraint firstAttribute="trailing" secondItem="yIT-qV-0NE" secondAttribute="trailing" id="TOX-hs-Yeb"/>
                                     <constraint firstAttribute="trailing" secondItem="ato-MW-FUf" secondAttribute="trailing" id="VcP-I3-78c"/>
+                                    <constraint firstItem="7V0-uK-uwh" firstAttribute="top" secondItem="C9x-V5-0QN" secondAttribute="bottom" id="g2L-2b-iKv"/>
+                                    <constraint firstAttribute="bottom" secondItem="7V0-uK-uwh" secondAttribute="bottom" id="h9W-dH-Ik0"/>
                                     <constraint firstItem="C9x-V5-0QN" firstAttribute="leading" secondItem="Iol-am-vdm" secondAttribute="leading" constant="55" id="ir2-mJ-zLU"/>
                                     <constraint firstItem="ato-MW-FUf" firstAttribute="leading" secondItem="Iol-am-vdm" secondAttribute="leading" id="oF7-ou-q12"/>
+                                    <constraint firstItem="7V0-uK-uwh" firstAttribute="leading" secondItem="Iol-am-vdm" secondAttribute="leading" id="prh-aR-Ff5"/>
                                     <constraint firstItem="C9x-V5-0QN" firstAttribute="bottom" secondItem="Iol-am-vdm" secondAttribute="top" id="vF4-kD-C30"/>
                                     <constraint firstAttribute="bottom" secondItem="yIT-qV-0NE" secondAttribute="bottom" id="vas-n2-d7t"/>
                                 </constraints>

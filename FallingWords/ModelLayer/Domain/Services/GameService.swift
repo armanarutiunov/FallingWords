@@ -8,7 +8,7 @@
 
 import RxSwift
 
-protocol GameService {
+public protocol GameService {
     
     func getWords() -> Observable<[JSONWord]>
     

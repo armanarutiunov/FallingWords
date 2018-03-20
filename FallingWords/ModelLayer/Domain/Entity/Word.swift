@@ -6,7 +6,7 @@
 //  Copyright © 2018 Arman Arutyunov. All rights reserved.
 //
 
-struct Word {
+public struct Word {
     let original: String
     let translations: [Translation]
     var translation: String {

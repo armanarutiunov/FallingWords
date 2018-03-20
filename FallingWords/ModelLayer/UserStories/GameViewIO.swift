@@ -8,7 +8,7 @@
 
 import RxCocoa
 
-protocol GameViewIO: ViewIO {
+public protocol GameViewIO: ViewIO {
     
     /// Right buttom pressed
     var rightPressed: Action { get }

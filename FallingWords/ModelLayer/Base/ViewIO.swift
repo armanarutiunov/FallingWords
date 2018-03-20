@@ -7,7 +7,7 @@
 //
 
 /// View Input-Output marker protocol for views
-protocol ViewIO : class {
+public protocol ViewIO : class {
 
 }
 

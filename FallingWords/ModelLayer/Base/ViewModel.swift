@@ -53,5 +53,5 @@ class ViewModel<V: ViewIO> {
 }
 
 // Shortcut
-typealias Action = Driver<Void>
+public typealias Action = Driver<Void>
 
