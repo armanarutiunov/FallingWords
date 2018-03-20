@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0109C8AC206157160098D8C4 /* XCTest+Eventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0109C8AB206157160098D8C4 /* XCTest+Eventually.swift */; };
 		015D3AE2205DBC7900BB3AD4 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AE1205DBC7900BB3AD4 /* ProgressBarView.swift */; };
 		015D3AE4205DD91300BB3AD4 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AE3205DD91300BB3AD4 /* PointsView.swift */; };
 		015D3AE7205FF12C00BB3AD4 /* JSONWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D3AE6205FF12C00BB3AD4 /* JSONWord.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0109C8AB206157160098D8C4 /* XCTest+Eventually.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Eventually.swift"; sourceTree = "<group>"; };
 		015D3AE1205DBC7900BB3AD4 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		015D3AE3205DD91300BB3AD4 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		015D3AE6205FF12C00BB3AD4 /* JSONWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONWord.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				01C8E3012057FCEA00ABD392 /* FallingWordsTests.swift */,
+				0109C8AB206157160098D8C4 /* XCTest+Eventually.swift */,
 				015D3AF72060AA6800BB3AD4 /* UserStories */,
 				015D3AF62060AA6000BB3AD4 /* Mocks */,
 				01C8E3032057FCEA00ABD392 /* Info.plist */,
@@ -581,6 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0109C8AC206157160098D8C4 /* XCTest+Eventually.swift in Sources */,
 				015D3AF92060AA8D00BB3AD4 /* GameViewModelTests.swift in Sources */,
 				01A050D02060B027007D443E /* MockGameService.swift in Sources */,
 				01C8E3022057FCEA00ABD392 /* FallingWordsTests.swift in Sources */,

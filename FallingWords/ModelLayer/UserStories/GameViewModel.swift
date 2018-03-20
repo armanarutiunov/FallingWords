@@ -12,7 +12,7 @@ import RxCocoa
 class GameViewModel<V: GameViewIO>: ViewModel<V> {
     
     private let gameService: GameService = LocalGameService()
-    private let game = BehaviorRelay<Game>(value: Game(words: [Word]()))
+    public let game = BehaviorRelay<Game>(value: Game(words: [Word]()))
     
     override func setup() {
         updateWords()
@@ -76,7 +76,11 @@ class GameViewModel<V: GameViewIO>: ViewModel<V> {
             .disposed(by: disposeBag)
     }
     
-    private func shuffleWords(_ jsonWords: [JSONWord]) -> [Word] {
+    /// Shuffles original JSON array. Method is public only for unit testing.
+    ///
+    /// - Parameter jsonWords: Original array of words from JSON
+    /// - Returns: Shuffled array of words in presentable way
+    public func shuffleWords(_ jsonWords: [JSONWord]) -> [Word] {
         var words = [Word]()
         
         jsonWords.forEach {

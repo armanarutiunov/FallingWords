@@ -62,23 +62,16 @@ extension GameViewController: GameViewIO {
     
     func updateScore(isAdding: Bool, previousScore: Int) {
         let plusScore = pointsView.stopFalling()
+        var newScore = isAdding ? previousScore + plusScore : previousScore - 100
+        newScore = checkBoundaries(newScore)
         isAdding ?
-            addPoints(newScore: previousScore + plusScore,
-                      pointsAdding: plusScore) :
-            subtractPoints(previousScore - 100)
+            addPoints(newScore: newScore, pointsAdding: plusScore) :
+            subtractPoints(newScore)
     }
     
     func endGame(_ didWin: Bool) {
         let title = didWin ? "You win!" : " You lose :("
-        let alert = UIAlertController(title: title, message: "Want to try again?", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Sure!", style: .default, handler: { [weak self] action in
-            guard let `self` = self else { return }
-            self.newGameSignal.onNext(())
-            self.progressBar.greenWidth.constant = self.progressBar.frame.width / 2
-            self.scoreLabel.text = "Your score: 0"
-        })
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        endGameAlert(title: title)
     }
     
     func showError(_ error: DomainError) {
@@ -103,7 +96,8 @@ extension GameViewController {
     }
     
     private func animateScoreUpdate(_ label: UILabel, score: Int) {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.view.isUserInteractionEnabled = false
             label.alpha = 1
         }, completion: { [weak self] _ in
             self?.progressBar.updateScore(score)
@@ -112,8 +106,33 @@ extension GameViewController {
                 label.alpha = 0
             }, completion: { [weak self] _ in
                 self?.updateDataSignal.onNext(score)
+                self?.view.isUserInteractionEnabled = true
             })
         })
+    }
+    
+    private func checkBoundaries(_ score: Int) -> Int {
+        if score >= 1000 || score <= -1000 {
+            return score >= 1000 ?
+                score - (score - 1000) :
+                score - (score + 1000)
+        }
+        return score
+    }
+    
+    private func endGameAlert(title: String) {
+        let alert = UIAlertController(title: title, message: "Want to try again?", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Sure!", style: .default, handler: { [weak self] action in
+            self?.startNewGame()
+        })
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func startNewGame() {
+        self.newGameSignal.onNext(())
+        self.progressBar.greenWidth.constant = self.progressBar.frame.width / 2
+        self.scoreLabel.text = "Your score: 0"
     }
 }
 
