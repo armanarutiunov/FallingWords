@@ -10,11 +10,11 @@ import RxCocoa
 
 public protocol GameViewIO: ViewIO {
     
-    /// Right buttom pressed
-    var rightPressed: Action { get }
+    /// Right button pressed
+    var rightPressed: Driver<Int> { get }
     
     /// Wrong button pressed
-    var wrongPressed: Action { get }
+    var wrongPressed: Driver<Int> { get }
     
     /// User did not hit any button while word was falling
     var didNotHit: Action { get }
@@ -29,7 +29,7 @@ public protocol GameViewIO: ViewIO {
     func showWord(_ word: Word, duration: CFTimeInterval)
     
     /// Update user's score
-    func updateScore(isAdding: Bool, previousScore: Int)
+    func updateScore(isAdding: Bool, newScore: Int)
     
     /// Show alert of ending game
     func endGame(_ didWin: Bool)

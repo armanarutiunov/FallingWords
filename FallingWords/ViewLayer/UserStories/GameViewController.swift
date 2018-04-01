@@ -25,22 +25,34 @@ class GameViewController: UIViewController {
     private let viewModel = GameViewModel<GameViewController>()
     private let updateDataSignal = PublishSubject<Int>()
     private let newGameSignal = PublishSubject<Void>()
+    private let rightSignalScore = PublishSubject<Int>()
+    private let wrongSignalScore = PublishSubject<Int>()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.attachView(viewIO: self).disposed(by: disposeBag)
         progressBar.greenWidth.constant = progressBar.frame.width / 2
     }
-
+    
+    @IBAction func rightButtonPressed(_ sender: Any) {
+        let plusScore = pointsView.stopFalling()
+        rightSignalScore.onNext(plusScore)
+    }
+    
+    @IBAction func wrongButtonPressed(_ sender: Any) {
+        let plusScore = pointsView.stopFalling()
+        wrongSignalScore.onNext(plusScore)
+    }
+    
 }
 
 extension GameViewController: GameViewIO {
-    var rightPressed: Action {
-        return rightButton.rx.tap.asAction()
+    var rightPressed: Driver<Int> {
+        return rightSignalScore.asDriver(onErrorDriveWith: .never())
     }
     
-    var wrongPressed: Action {
-        return wrongButton.rx.tap.asAction()
+    var wrongPressed: Driver<Int> {
+        return wrongSignalScore.asDriver(onErrorDriveWith: .never())
     }
     
     var didNotHit: Action {
@@ -60,10 +72,8 @@ extension GameViewController: GameViewIO {
         pointsView.newFall(with: word.translation, duration: duration)
     }
     
-    func updateScore(isAdding: Bool, previousScore: Int) {
+    func updateScore(isAdding: Bool, newScore: Int) {
         let plusScore = pointsView.stopFalling()
-        var newScore = isAdding ? previousScore + plusScore : previousScore - 100
-        newScore = checkBoundaries(newScore)
         isAdding ?
             addPoints(newScore: newScore, pointsAdding: plusScore) :
             subtractPoints(newScore)
@@ -96,34 +106,25 @@ extension GameViewController {
     }
     
     private func animateScoreUpdate(_ label: UILabel, score: Int) {
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-            self?.view.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.5, animations: { [unowned self] in
+            self.view.isUserInteractionEnabled = false
             label.alpha = 1
-        }, completion: { [weak self] _ in
-            self?.progressBar.updateScore(score)
-            self?.scoreLabel.text = "Your score: \(score)"
+        }, completion: { [unowned self] _ in
+            self.progressBar.updateScore(score)
+            self.scoreLabel.text = "Your score: \(score)"
             UIView.animate(withDuration: 0.3, animations: {
                 label.alpha = 0
-            }, completion: { [weak self] _ in
-                self?.updateDataSignal.onNext(score)
-                self?.view.isUserInteractionEnabled = true
+            }, completion: { [unowned self] _ in
+                self.updateDataSignal.onNext(score)
+                self.view.isUserInteractionEnabled = true
             })
         })
     }
     
-    private func checkBoundaries(_ score: Int) -> Int {
-        if score >= 1000 || score <= -1000 {
-            return score >= 1000 ?
-                score - (score - 1000) :
-                score - (score + 1000)
-        }
-        return score
-    }
-    
     private func endGameAlert(title: String) {
         let alert = UIAlertController(title: title, message: "Want to try again?", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Sure!", style: .default, handler: { [weak self] action in
-            self?.startNewGame()
+        let action = UIAlertAction(title: "Sure!", style: .default, handler: { [unowned self] action in
+            self.startNewGame()
         })
         alert.addAction(action)
         present(alert, animated: true, completion: nil)

@@ -22,14 +22,13 @@ class GameViewModel<V: GameViewIO>: ViewModel<V> {
         guard let viewIO = viewIO else { return Disposables.create() }
         
         return disposable(
-            viewIO.rightPressed.drive(onNext: { [weak self] _ in
-                self?.finishRound(userChoice: true)
+            viewIO.rightPressed.drive(onNext: { [unowned self] plusScore in
+                self.finishRound(userChoice: true, plusScore: plusScore)
             }),
-            viewIO.wrongPressed.drive(onNext: { [weak self] _ in
-                self?.finishRound(userChoice: false)
+            viewIO.wrongPressed.drive(onNext: { [unowned self] plusScore in
+                self.finishRound(userChoice: false, plusScore: plusScore)
             }),
-            viewIO.updateData.drive(onNext: { [weak self] newScore in
-                guard let `self` = self else { return }
+            viewIO.updateData.drive(onNext: { [unowned self] newScore in
                 self.game.value.score = newScore
                 if newScore >= 1000 || newScore <= -1000 {
                     viewIO.endGame(newScore >= 1000)
@@ -38,24 +37,39 @@ class GameViewModel<V: GameViewIO>: ViewModel<V> {
                 viewIO.showWord(self.game.value.currentWord,
                                 duration: self.game.value.fallDuration)
             }),
-            viewIO.didNotHit.drive(onNext: { [weak self] in
-                guard let `self` = self else { return }
+            viewIO.didNotHit.drive(onNext: { [unowned self] in
                 let isRight = self.game.value.currentWord.translations.first!.isRight
-                self.finishRound(userChoice: !isRight)
+                self.finishRound(userChoice: !isRight, plusScore: 0)
             }),
-            viewIO.newGame.drive(onNext: { [weak self] in
-                self?.updateWords()
+            viewIO.newGame.drive(onNext: { [unowned self] in
+                self.updateWords()
             })
         )
     }
     
-    private func finishRound(userChoice: Bool) {
+    private func finishRound(userChoice: Bool, plusScore: Int) {
         let userIsRight = userChoice == game.value.currentWord.translations.first!.isRight
+        
         let _ = userChoice && !userIsRight ?
             game.value.updateCurrentWord() :
             game.value.updateTranslation()
+        
+        var newScore = userIsRight ?
+            game.value.score + plusScore :
+            game.value.score - 100
+        newScore = checkBoundaries(newScore)
+        
         viewIO?.updateScore(isAdding: userIsRight,
-                            previousScore: game.value.score)
+                            newScore: newScore)
+    }
+    
+    func checkBoundaries(_ score: Int) -> Int {
+        if score >= 1000 || score <= -1000 {
+            return score >= 1000 ?
+                score - (score - 1000) :
+                score - (score + 1000)
+        }
+        return score
     }
     
     private func updateWords() {

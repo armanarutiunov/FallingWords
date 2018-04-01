@@ -19,8 +19,8 @@ class ProgressBarView: UIView {
         let physicalScore = CGFloat(score + maxScore)
         let percentage = physicalScore / physicalMax
         greenWidth.constant = frame.size.width * percentage
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3) { [unowned self] in
+            self.layoutIfNeeded()
         }
     }
 

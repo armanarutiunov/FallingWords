@@ -8,7 +8,6 @@ target 'FallingWords' do
   # Pods for FallingWords
 pod 'RxSwift', '~> 4.0'
 pod 'RxCocoa', '~> 4.0'
-pod 'SwiftyJSON'
 
   target 'FallingWordsTests' do
     inherit! :search_paths

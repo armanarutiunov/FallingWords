@@ -7,7 +7,6 @@
 //
 
 import RxSwift
-import SwiftyJSON
 
 class LocalGameService: GameService {
     
@@ -16,11 +15,8 @@ class LocalGameService: GameService {
             if let path = Bundle.main.path(forResource: "words", ofType: "json") {
                 do {
                     let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-                    let jsonObj = try JSON(data: data).arrayObject as? [[String: String]]
-                    if let json = jsonObj {
-                        let words = json.map { JSONWord(original: $0["text_eng"]!, translation: $0["text_spa"]!) }
-                        observer.onNext(words)
-                    } else { observer.onError(ErrorCase.parseError) }
+                    let words = try JSONDecoder().decode([JSONWord].self, from: data)
+                    observer.onNext(words)
                 } catch {
                     observer.onError(ErrorCase.parseError)
                 }
